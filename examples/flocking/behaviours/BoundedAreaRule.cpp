@@ -20,10 +20,12 @@ Vector2 BoundedAreaRule::computeForce(const std::vector<Boid*>& neighborhood, Bo
     if (worldSize.x - boid->transform.position.x < desiredDistance)
     {
         force.x = desiredDistance - (worldSize.x - boid->transform.position.x);
+        force.x *= -1;
     }
     if (worldSize.y - boid->transform.position.y < desiredDistance)
     {
         force.y = desiredDistance - (worldSize.y - boid->transform.position.y);
+        force.y *= -1;
     }
 
     return force;
