@@ -7,17 +7,17 @@ Vector2 CohesionRule::computeForce(const std::vector<Boid*>& neighborhood, Boid*
     // todo: add your code here to make a force towards the center of mass
     // hint: iterate over the neighborhood
 
-    int numBoids = neighborhood.size();
-    Vector2 averagePosition = Vector2::zero();
-    for (Boid* b : neighborhood)
-    {
-        averagePosition += b->transform.position;
+    if (!neighborhood.empty()) {
+        int numBoids = neighborhood.size();
+        Vector2 averagePosition = Vector2::zero();
+        for (Boid *b: neighborhood) {
+            averagePosition += b->transform.position;
+        }
+        averagePosition += boid->transform.position;
+        averagePosition /= numBoids + 1;
+
+        cohesionForce = averagePosition - boid->transform.position;
     }
-    averagePosition += boid->transform.position;
-    averagePosition /= numBoids + 1;
-
-    cohesionForce = averagePosition - boid->transform.position;
-
 
     return cohesionForce;
 }
