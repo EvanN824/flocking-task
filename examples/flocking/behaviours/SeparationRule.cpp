@@ -22,8 +22,10 @@ Vector2 SeparationRule::computeForce(const std::vector<Boid*>& neighborhood, Boi
                 countCloseFlockmates++;
             }
         }
-
-        separatingForce /= countCloseFlockmates;
+        if (countCloseFlockmates > 0)
+        {
+            separatingForce /= countCloseFlockmates;
+        }
     }
 
     separatingForce = Vector2::normalized(separatingForce);
