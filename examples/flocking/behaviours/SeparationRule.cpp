@@ -29,7 +29,7 @@ Vector2 SeparationRule::computeForce(const std::vector<Boid*>& neighborhood, Boi
     }
 
     separatingForce *= -1;
-    separatingForce = Vector2::normalized(separatingForce);
+    separatingForce = separatingForce;
 
     return separatingForce;
 }
