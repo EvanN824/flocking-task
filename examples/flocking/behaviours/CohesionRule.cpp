@@ -19,5 +19,5 @@ Vector2 CohesionRule::computeForce(const std::vector<Boid*>& neighborhood, Boid*
         cohesionForce = averagePosition - boid->transform.position;
     }
 
-    return cohesionForce;
+    return Vector2::normalized(cohesionForce);
 }

@@ -6,10 +6,10 @@
 Vector2 WindRule::computeForce(const std::vector<Boid*>& neighborhood, Boid* boid) {
     // todo: add a wind force here
     // hint: use the windAngle variable
-    Vector2 force = Vector2(0,1);
-
-    Vector2::Rotate(force, windAngle);
-
+    Vector2 force = Vector2::zero();
+    float boidVelocity = sqrt((boid->getVelocity().x, 2) + (boid->getVelocity().y, 2));
+    force.x = boidVelocity * cos(windAngle);
+    force.y = boidVelocity * sin(windAngle);
     return force;
 }
 
